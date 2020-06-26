@@ -50,7 +50,7 @@ def require_jwt(function):
         token = str.replace(str(data), 'Bearer ', '')
         try:
             jwt.decode(token, JWT_SECRET, algorithms=['HS256'])
-        except: # pylint: disable=bare-except
+        except:
             abort(401)
 
         return function(*args, **kws)
@@ -94,7 +94,7 @@ def decode_jwt():
     token = str.replace(str(data), 'Bearer ', '')
     try:
         data = jwt.decode(token, JWT_SECRET, algorithms=['HS256'])
-    except: # pylint: disable=bare-except
+    except:
         abort(401)
 
 
